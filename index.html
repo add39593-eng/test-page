@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3年B組 クラスホームページ | Class Homepage</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#075985',
+                        },
+                        accent: {
+                            500: '#f59e0b',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', '"Noto Sans JP"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-sky-400 flex items-center justify-center text-white font-bold text-xl shadow-md group-hover:scale-105 transition-transform">
+                        3B
+                    </div>
+                    <span class="font-bold text-lg text-slate-800 tracking-tight group-hover:text-brand-600 transition-colors">
+                        3年B組 ホームページ
+                    </span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-600">
+                    <a href="#announcements" class="hover:text-brand-600 transition-colors flex items-center gap-2">
+                        <i class="fa-solid font-normal fa-bullhorn text-brand-500"></i> お知らせ
+                    </a>
+                    <a href="#schedule" class="hover:text-brand-600 transition-colors flex items-center gap-2">
+                        <i class="fa-regular fa-calendar text-brand-500"></i> 行事予定
+                    </a>
+                    <a href="#gallery" class="hover:text-brand-600 transition-colors flex items-center gap-2">
+                        <i class="fa-regular fa-images text-brand-500"></i> ギャラリー
+                    </a>
+                    <a href="#messages" class="hover:text-brand-600 transition-colors flex items-center gap-2">
+                        <i class="fa-regular fa-comments text-brand-500"></i> 掲示板
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-btn" class="md:hidden p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none" aria-label="Toggle Menu">
+                    <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 bg-white px-4 pt-2 pb-4 space-y-3 font-medium text-slate-600">
+            <a href="#announcements" class="block py-2 hover:text-brand-600 flex items-center gap-3">
+                <i class="fa-solid fa-bullhorn text-brand-500 w-5"></i> お知らせ
+            </a>
+            <a href="#schedule" class="block py-2 hover:text-brand-600 flex items-center gap-3">
+                <i class="fa-regular fa-calendar text-brand-500 w-5"></i> 行事予定
+            </a>
+            <a href="#gallery" class="block py-2 hover:text-brand-600 flex items-center gap-3">
+                <i class="fa-regular fa-images text-brand-500 w-5"></i> ギャラリー
+            </a>
+            <a href="#messages" class="block py-2 hover:text-brand-600 flex items-center gap-3">
+                <i class="fa-regular fa-comments text-brand-500 w-5"></i> 掲示板
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-brand-600 via-sky-600 to-sky-700 text-white overflow-hidden py-20 lg:py-28">
+        <!-- Background decorative elements -->
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="absolute -bottom-10 -right-10 w-96 h-96 bg-sky-400 rounded-full blur-3xl opacity-30"></div>
+
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <span class="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-md text-white text-xs font-semibold tracking-wider uppercase mb-4 border border-white/20">
+                Welcome to Class 3-B
+            </span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+                仲間とともに、笑顔で駆け抜ける1年！
+            </h1>
+            <p class="text-lg sm:text-xl text-sky-100 max-w-2xl mx-auto mb-8 font-light">
+                3年B組の公式クラスホームページです。クラスからのお知らせやイベントの写真、行事予定などを随時更新していきます！
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#announcements" class="px-6 py-3 rounded-xl bg-white text-brand-700 font-bold hover:bg-slate-100 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                    最新のお知らせを見る
+                </a>
+                <a href="#gallery" class="px-6 py-3 rounded-xl bg-brand-500/30 border border-white/30 text-white font-bold hover:bg-brand-500/50 transition-all backdrop-blur-sm">
+                    フォトギャラリー
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Grid -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20 flex-grow">
+
+        <!-- Section: Announcements -->
+        <section id="announcements" class="scroll-mt-20">
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 flex items-center gap-3">
+                        <span class="w-3 h-8 bg-brand-500 rounded-full inline-block"></span>
+                        お知らせ
+                    </h2>
+                    <p class="text-slate-500 text-sm mt-1">クラスの最新情報・連絡事項です</p>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Announcement Item 1 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-3">
+                            <span class="px-2.5 py-0.5 text-xs font-bold rounded-md bg-amber-100 text-amber-800">重要</span>
+                            <span class="text-sm text-slate-400">2026.04.10</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 hover:text-brand-600 transition-colors cursor-pointer">
+                            文化祭の出し物決定と準備について
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            今年の文化祭出し物は「劇＆教室デコレーション」に決定しました！来週月曜日から放課後準備を開始します。
+                        </p>
+                    </div>
+                    <button class="self-start md:self-center px-4 py-2 text-xs font-semibold text-brand-600 bg-brand-50 rounded-lg hover:bg-brand-100 transition-colors whitespace-nowrap">
+                        詳細を読む
+                    </button>
+                </div>
+
+                <!-- Announcement Item 2 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-3">
+                            <span class="px-2.5 py-0.5 text-xs font-bold rounded-md bg-sky-100 text-brand-700">行事</span>
+                            <span class="text-sm text-slate-400">2026.04.05</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 hover:text-brand-600 transition-colors cursor-pointer">
+                            新学期オリエンテーションと集金のお知らせ
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            新学期プリントを配布しました。保護者氏名印の提出期限は今週金曜日までとなっております。
+                        </p>
+                    </div>
+                    <button class="self-start md:self-center px-4 py-2 text-xs font-semibold text-brand-600 bg-brand-50 rounded-lg hover:bg-brand-100 transition-colors whitespace-nowrap">
+                        詳細を読む
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Schedule -->
+        <section id="schedule" class="scroll-mt-20">
+            <div class="mb-8">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 flex items-center gap-3">
+                    <span class="w-3 h-8 bg-brand-500 rounded-full inline-block"></span>
+                    今月の行事予定
+                </h2>
+                <p class="text-slate-500 text-sm mt-1">今月予定されているテストやイベント</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Schedule Card 1 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden group hover:border-brand-500 transition-all">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-brand-50 rounded-bl-full -mr-6 -mt-6 transition-transform group-hover:scale-110"></div>
+                    <span class="text-3xl font-extrabold text-brand-600 block mb-2">15 <span class="text-sm font-semibold text-slate-500">水</span></span>
+                    <h3 class="text-slate-800 font-bold mb-1">中間テスト（1日目）</h3>
+                    <p class="text-xs text-slate-500">国語・数学・英語の試験が行われます。持ち物：受験用具一式</p>
+                </div>
+
+                <!-- Schedule Card 2 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden group hover:border-brand-500 transition-all">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-brand-50 rounded-bl-full -mr-6 -mt-6 transition-transform group-hover:scale-110"></div>
+                    <span class="text-3xl font-extrabold text-brand-600 block mb-2">16 <span class="text-sm font-semibold text-slate-500">木</span></span>
+                    <h3 class="text-slate-800 font-bold mb-1">中間テスト（2日目）</h3>
+                    <p class="text-xs text-slate-500">理科・社会の試験。午後はクラス学結活動。</p>
+                </div>
+
+                <!-- Schedule Card 3 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden group hover:border-brand-500 transition-all">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-amber-50 rounded-bl-full -mr-6 -mt-6 transition-transform group-hover:scale-110"></div>
+                    <span class="text-3xl font-extrabold text-amber-500 block mb-2">28 <span class="text-sm font-semibold text-slate-500">火</span></span>
+                    <h3 class="text-slate-800 font-bold mb-1">球技大会</h3>
+                    <p class="text-xs text-slate-500">グラウンド・体育館にて実施。体操服・タオル・水分を持参してください。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Gallery -->
+        <section id="gallery" class="scroll-mt-20">
+            <div class="mb-8">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 flex items-center gap-3">
+                    <span class="w-3 h-8 bg-brand-500 rounded-full inline-block"></span>
+                    ギャラリー
+                </h2>
+                <p class="text-slate-500 text-sm mt-1">思い出の写真集</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Gallery Item 1 -->
+                <div class="group relative bg-slate-200 rounded-2xl overflow-hidden shadow-sm aspect-video">
+                    <img src="https://placehold.co/600x400/0284c7/ffffff?text=Entrance+Ceremony" alt="入学式" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+                        <span class="text-xs text-brand-300">4月</span>
+                        <p class="text-white font-bold text-sm">入学式・新学期スタート</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="group relative bg-slate-200 rounded-2xl overflow-hidden shadow-sm aspect-video">
+                    <img src="https://placehold.co/600x400/0369a1/ffffff?text=Class+HR" alt="クラスホームルーム" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+                        <span class="text-xs text-brand-300">4月</span>
+                        <p class="text-white font-bold text-sm">初めてのホームルーム</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3 -->
+                <div class="group relative bg-slate-200 rounded-2xl overflow-hidden shadow-sm aspect-video">
+                    <img src="https://placehold.co/600x400/0f172a/ffffff?text=Sports+Day" alt="球技大会練習" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+                        <span class="text-xs text-brand-300">5月予定</span>
+                        <p class="text-white font-bold text-sm">球技大会の練習風景</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Message Board -->
+        <section id="messages" class="scroll-mt-20">
+            <div class="mb-8">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 flex items-center gap-3">
+                    <span class="w-3 h-8 bg-brand-500 rounded-full inline-block"></span>
+                    ひとこと掲示板
+                </h2>
+                <p class="text-slate-500 text-sm mt-1">クラスのみんなへのメッセージや質問を書き込もう</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Form Container -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm h-fit">
+                    <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <i class="fa-regular fa-pen-to-square text-brand-500"></i> メッセージを投稿する
+                    </h3>
+                    <form id="message-form" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">お名前 (ニックネーム可)</label>
+                            <input type="text" id="author" required placeholder="例: 3B太郎" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">メッセージ</label>
+                            <textarea id="content" required rows="3" placeholder="文化祭の練習、頑張りましょう！" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-lg text-sm transition-colors shadow-sm">
+                            投稿する
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Messages List -->
+                <div class="lg:col-span-2 space-y-4" id="message-list">
+                    <!-- Sample Post 1 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm space-y-2">
+                        <div class="flex justify-between items-center text-xs text-slate-400">
+                            <span class="font-bold text-slate-700">文化祭委員</span>
+                            <span>1時間前</span>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            劇の衣装について希望がある人は、今週中にスプレッドシートに入力をお願いします！
+                        </p>
+                    </div>
+
+                    <!-- Sample Post 2 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm space-y-2">
+                        <div class="flex justify-between items-center text-xs text-slate-400">
+                            <span class="font-bold text-slate-700">匿名</span>
+                            <span>3時間前</span>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            中間テストの範囲ってどこまででしたっけ？誰か教えて〜！
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-sm py-8 border-t border-slate-800 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
+            <p class="font-semibold text-slate-300">3年B组 公式クラスホームページ</p>
+            <p class="text-xs text-slate-500">URL: class-homepage.f5.si</p>
+            <p class="text-xs text-slate-600">&copy; 2026 Class 3-B. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Script -->
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if(mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            }
+        });
+
+        // Simple Message Board Add Logic (Front-end Demo)
+        const messageForm = document.getElementById('message-form');
+        const messageList = document.getElementById('message-list');
+
+        messageForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const author = document.getElementById('author').value.trim();
+            const content = document.getElementById('content').value.trim();
+
+            if (!author || !content) return;
+
+            // Create new message element
+            const newMsg = document.createElement('div');
+            newMsg.className = "bg-white p-5 rounded-2xl border border-slate-100 shadow-sm space-y-2 animate-fade-in";
+            newMsg.innerHTML = `
+                <div class="flex justify-between items-center text-xs text-slate-400">
+                    <span class="font-bold text-slate-700">${escapeHTML(author)}</span>
+                    <span>たった今</span>
+                </div>
+                <p class="text-sm text-slate-600 leading-relaxed">${escapeHTML(content)}</p>
+            `;
+
+            // Insert at the top of the list
+            messageList.prepend(newMsg);
+
+            // Reset form
+            messageForm.reset();
+        });
+
+        // Helper to prevent HTML injection
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    "'": '&#39;',
+                    '"': '&quot;'
+                }[tag] || tag)
+            );
+        }
+    </script>
+</body>
+</html>
