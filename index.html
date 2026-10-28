@@ -49,7 +49,6 @@
                 <button onclick="navigateTo('about')" data-page="about" class="nav-btn px-3 py-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors">クラス紹介</button>
                 <button onclick="navigateTo('timetable')" data-page="timetable" class="nav-btn px-3 py-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors">時間割</button>
                 <button onclick="navigateTo('schedule')" data-page="schedule" class="nav-btn px-3 py-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors">年間行事</button>
-                <button onclick="navigateTo('gallery')" data-page="gallery" class="nav-btn px-3 py-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors">ギャラリー</button>
             </nav>
 
             <!-- Mobile Menu Toggle -->
@@ -65,7 +64,6 @@
             <button onclick="navigateTo('about')" class="w-full text-left py-2 px-3 text-sm font-medium rounded-md hover:bg-slate-100">クラス紹介</button>
             <button onclick="navigateTo('timetable')" class="w-full text-left py-2 px-3 text-sm font-medium rounded-md hover:bg-slate-100">時間割</button>
             <button onclick="navigateTo('schedule')" class="w-full text-left py-2 px-3 text-sm font-medium rounded-md hover:bg-slate-100">年間行事</button>
-            <button onclick="navigateTo('gallery')" class="w-full text-left py-2 px-3 text-sm font-medium rounded-md hover:bg-slate-100">ギャラリー</button>
         </div>
     </header>
 
@@ -206,17 +204,6 @@
             </div>
         </div>
 
-        <!-- Page 6: Gallery Page -->
-        <div id="page-gallery" class="page-content hidden space-y-6">
-            <div class="border-b border-slate-200 pb-4">
-                <h1 class="text-2xl font-bold text-slate-900">フォトギャラリー</h1>
-                <p class="text-xs text-slate-500 mt-1">クラスの思い出スナップ（クリックで拡大表示）</p>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" id="galleryGrid">
-                <!-- JS Output -->
-            </div>
-        </div>
-
     </main>
 
     <!-- Footer -->
@@ -240,20 +227,6 @@
             <p id="modalContent" class="text-sm text-slate-600 leading-relaxed whitespace-pre-line">--</p>
             <div class="pt-4 border-t border-slate-100 text-right">
                 <button onclick="closeModal('newsModal')" class="px-5 py-2 bg-slate-800 text-white text-xs font-medium rounded-lg hover:bg-slate-700 transition-colors">閉じる</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Lightbox Modal -->
-    <div id="galleryModal" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="max-w-2xl w-full bg-white rounded-xl overflow-hidden shadow-2xl">
-            <div class="relative bg-slate-900 h-64 md:h-80 flex items-center justify-center">
-                <img id="lightboxImg" src="" alt="" class="max-h-full max-w-full object-contain">
-                <button onclick="closeModal('galleryModal')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/50 text-white hover:bg-black/70 flex items-center justify-center text-sm font-bold">✕</button>
-            </div>
-            <div class="p-6">
-                <h3 id="lightboxTitle" class="text-base font-bold text-slate-900">--</h3>
-                <p id="lightboxDesc" class="text-xs text-slate-600 mt-2 leading-relaxed">--</p>
             </div>
         </div>
     </div>
@@ -282,13 +255,6 @@
                 category: '学習',
                 title: '2学期 中間テストの範囲表配布について',
                 desc: '本日、中間テストの試験範囲表および学習計画表を配布しました。\n各自、計画的にテスト勉強を進めましょう。'
-            },
-              {
-                id: 4,
-                date: '2026年10月26日',
-                category: 'test',
-                title: 'test',
-                desc: 'テストです'
             }
         ];
 
@@ -342,28 +308,6 @@
             { month: '9月', title: '体育祭', desc: '学年優勝を目指して全員リレーや大縄跳びに挑戦します。' },
             { month: '11月', title: '合唱コンクール', desc: 'クラス全員で合唱曲を披露します。' },
             { month: '3月', title: '球技大会・クラス解散会', desc: '1年間の締めくくりイベント。' }
-        ];
-
-        // Gallery Data
-        const galleryData = [
-            {
-                id: 1,
-                title: '体育祭の全員リレー',
-                desc: 'みんなで力を合わせてバトンを繋ぎ、見事入賞しました！',
-                url: 'https://images.unsplash.com/photo-1561642769-1229712a20a4?auto=format&fit=crop&w=800&q=80'
-            },
-            {
-                id: 2,
-                title: '校外学習（飯ごう炊さん）',
-                desc: '自然の中で協力して作ったカレーライスは格別の味でした。',
-                url: 'https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=80'
-            },
-            {
-                id: 3,
-                title: '昼休みの様子',
-                desc: 'いつもの和気あいあいとした6組の日常風景です。',
-                url: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80'
-            }
         ];
 
         // Page Navigation Logic
@@ -452,21 +396,6 @@
             `).join('');
         }
 
-        function renderGallery() {
-            const container = document.getElementById('galleryGrid');
-            container.innerHTML = galleryData.map(item => `
-                <div onclick="openGalleryModal(${item.id})" class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer group">
-                    <div class="h-48 overflow-hidden bg-slate-100 relative">
-                        <img src="${item.url}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e2e8f0/475569?text=Class+Photo';">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-sm font-bold text-slate-800 group-hover:text-brand-600 transition-colors">${item.title}</h3>
-                        <p class="text-xs text-slate-500 mt-1 line-clamp-2">${item.desc}</p>
-                    </div>
-                </div>
-            `).join('');
-        }
-
         // Modals
         function openNewsModal(id) {
             const item = newsData.find(n => n.id === id);
@@ -478,17 +407,6 @@
             document.getElementById('newsModal').classList.remove('hidden');
         }
 
-        function openGalleryModal(id) {
-            const item = galleryData.find(g => g.id === id);
-            if (!item) return;
-            document.getElementById('lightboxTitle').innerText = item.title;
-            document.getElementById('lightboxDesc').innerText = item.desc;
-            const img = document.getElementById('lightboxImg');
-            img.src = item.url;
-            img.onerror = () => { img.src = 'https://placehold.co/800x600/e2e8f0/475569?text=Class+Photo'; };
-            document.getElementById('galleryModal').classList.remove('hidden');
-        }
-
         function closeModal(modalId) {
             document.getElementById(modalId).classList.add('hidden');
         }
@@ -498,7 +416,6 @@
             renderNews();
             renderTimetable('Mon');
             renderSchedule();
-            renderGallery();
 
             // Mobile Menu Toggle
             document.getElementById('mobileMenuBtn').onclick = () => {
