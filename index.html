@@ -3,436 +3,537 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1年6組 公式ホームページ</title>
-    <!-- Tailwind CSS -->
+    <title>1年6組 - 公式ホームページ</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Noto Sans JP"', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            500: '#0284c7',
-                            600: '#0369a1',
-                            700: '#075985',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
     <style>
-        body { font-family: 'Noto Sans JP', sans-serif; }
+        /* 2000年代レトロWeb・学校CMS（NetCommons風）特有のスタイリング（シックで温かみのある深めのブラウン基調） */
+        body {
+            font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, 大阪, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+            background-color: #f4efe9; /* 上品で少し深みのある薄茶色 */
+            color: #362920;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* しっかりとした深みのあるブラウン・グラデーション */
+        .brown-header-bg {
+            background: linear-gradient(180deg, #966f53 0%, #765239 100%);
+        }
+
+        .box-brown-header {
+            background: linear-gradient(180deg, #886248 0%, #694730 100%);
+            color: #ffffff;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 4px 4px 0 0;
+            border: 1px solid #573924;
+            border-bottom: none;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+        }
+
+        .box-brown-content {
+            background-color: #ffffff;
+            border: 1px solid #c2b0a0;
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+            padding: 10px;
+            margin-bottom: 14px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+        }
+
+        /* リンク風デザイン */
+        a {
+            color: #764b28;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #9a683e;
+            text-decoration: underline;
+        }
+
+        /* サイドバーリスト */
+        .sidebar-list li {
+            padding: 4px 0 4px 14px;
+            border-bottom: 1px dashed #dfd3c6;
+            position: relative;
+        }
+        .sidebar-list li::before {
+            content: "■";
+            position: absolute;
+            left: 2px;
+            top: 5px;
+            color: #886248;
+            font-size: 8px;
+        }
+
+        /* 記事ブロック */
+        .post-box {
+            border: 1px solid #c2b0a0;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            background-color: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .post-title {
+            background-color: #eee4da;
+            border-bottom: 1px solid #dbcdc0;
+            color: #4a3322;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 6px 12px;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+        }
+
+        .post-body {
+            padding: 12px 14px;
+        }
+
+        .post-footer {
+            text-align: right;
+            font-size: 11px;
+            color: #7d6b5e;
+            padding: 4px 12px;
+            background-color: #f9f6f2;
+            border-top: 1px dashed #dfd3c6;
+            border-bottom-left-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+
+        /* カレンダー */
+        .calendar-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            font-size: 11px;
+        }
+        .calendar-table th {
+            background-color: #e2d4c6;
+            color: #4a3322;
+            padding: 3px 2px;
+            font-weight: normal;
+        }
+        .calendar-table td {
+            padding: 4px 2px;
+            border: 1px solid #eee4da;
+        }
+        .calendar-table .today {
+            background-color: #886248;
+            color: #ffffff;
+            font-weight: bold;
+            border-radius: 2px;
+        }
+        .calendar-table .sun { color: #b84337; }
+        .calendar-table .sat { color: #3b6e49; }
+
+        /* レトロボタン */
+        .retro-btn {
+            background: linear-gradient(180deg, #ffffff 0%, #eae0d5 100%);
+            border: 1px solid #a89584;
+            border-bottom: 2px solid #573924;
+            border-right: 2px solid #573924;
+            padding: 2px 10px;
+            font-size: 11px;
+            cursor: pointer;
+            border-radius: 2px;
+            color: #362920;
+        }
+        .retro-btn:active {
+            border-bottom: 1px solid #573924;
+            border-right: 1px solid #573924;
+            transform: translateY(1px);
+        }
+
+        /* アクティブなメニュー要素 */
+        .sidebar-list a.active-link {
+            font-weight: bold !important;
+            color: #764b28 !important;
+            text-decoration: underline;
+        }
+
+        /* ポータルナビゲーション */
+        .nav-bar {
+            background-color: #ffffff;
+            border: 1px solid #c2b0a0;
+            height: 30px;
+            margin-bottom: 14px;
+            border-radius: 3px;
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-700 min-h-screen flex flex-col antialiased">
+<body>
 
-    <!-- Navigation Bar -->
-    <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-            <a href="#" onclick="navigateTo('home'); return false;" class="flex items-center gap-2 font-bold text-lg text-slate-800">
-                <span class="w-8 h-8 rounded-lg bg-brand-500 text-white flex items-center justify-center font-extrabold text-sm shadow-sm">1-6</span>
-                <span>1年6組 公式ホームページ</span>
-            </a>
+<div class="max-w-[1020px] mx-auto mb-4 px-2 pt-0">
 
-            <!-- Desktop Nav Items -->
-            <nav class="hidden md:flex items-center space-x-1 text-sm font-medium" id="desktopNav">
-                <button onclick="navigateTo('home')" data-page="home" class="nav-btn px-3 py-2 rounded-md text-brand-600 bg-brand-50 font-bold transition-colors">ホーム</button>
-                <button onclick="navigateTo('news')" data-page="news" class="nav-btn px-3 py-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors">お知らせ</button>
-                <button onclick="navigateTo('about')" data-page="about" class="nav-btn px-3 py-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors">クラス紹介</button>
-                <button onclick="navigateTo('timetable')" data-page="timetable" class="nav-btn px-3 py-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors">時間割</button>
-                <button onclick="navigateTo('schedule')" data-page="schedule" class="nav-btn px-3 py-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors">年間行事</button>
-            </nav>
-
-            <!-- Mobile Menu Toggle -->
-            <button id="mobileMenuBtn" class="md:hidden p-2 text-slate-600 hover:text-slate-900 rounded-lg focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            </button>
+    <!-- 1. HEADER (ヘッダー領域：最上部に配置) -->
+    <header class="brown-header-bg border-b-4 border-[#573924] p-4 relative shadow-xs rounded-b">
+        <!-- 右上アクセスカウンター領域 -->
+        <div class="absolute top-3 right-3 text-right text-[11px] bg-white/90 px-3 py-1.5 rounded border border-[#c2b0a0] shadow-xs select-none">
+            <div class="text-gray-600 mb-0.5">最終更新日：<span id="current-date">2026/10/30</span></div>
+            <div class="text-gray-800 font-bold flex items-center justify-end gap-1">
+                <span>アクセスカウンター：</span>
+                <nobr><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td><a href="https://ctr.stylemap.co.jp/"><img src="https://www.f-counter.net/ani1/68/1793340808/" alt="無料アクセスカウンター" border="0" style="margin:0px; padding:0px; border:0px; vertical-align:bottom"></a></td><td><a href="https://ctr.stylemap.co.jp/"><img src="https://www.f-counter.net/ani2/68/1793340808/" alt="無料アクセスカウンター" border="0" style="margin:0px; padding:0px; border:0px; vertical-align:bottom"></a></td></tr></tbody></table></nobr>
+            </div>
         </div>
 
-        <!-- Mobile Navigation Drawer -->
-        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200 bg-white px-4 py-2 space-y-1 shadow-lg">
-            <button onclick="navigateTo('home')" class="w-full text-left py-2 px-3 text-sm font-medium rounded-md hover:bg-slate-100">ホーム</button>
-            <button onclick="navigateTo('news')" class="w-full text-left py-2 px-3 text-sm font-medium rounded-md hover:bg-slate-100">お知らせ</button>
-            <button onclick="navigateTo('about')" class="w-full text-left py-2 px-3 text-sm font-medium rounded-md hover:bg-slate-100">クラス紹介</button>
-            <button onclick="navigateTo('timetable')" class="w-full text-left py-2 px-3 text-sm font-medium rounded-md hover:bg-slate-100">時間割</button>
-            <button onclick="navigateTo('schedule')" class="w-full text-left py-2 px-3 text-sm font-medium rounded-md hover:bg-slate-100">年間行事</button>
+        <!-- タイトル -->
+        <div class="py-5 text-center">
+            <h1 class="text-2xl sm:text-3xl font-bold text-white tracking-wider cursor-pointer drop-shadow-xs" onclick="filterCategory('ALL')">
+                1年6組 公式ホームページ
+            </h1>
+            <p class="text-xs text-[#eee4da] mt-1 font-normal">― 明るく 楽しく 元気よく！ 1年6組へようこそ ―</p>
         </div>
     </header>
 
-    <!-- Main Dynamic Container -->
-    <main class="flex-grow max-w-5xl w-full mx-auto px-4 py-8">
-
-        <!-- Page 1: Home Page -->
-        <div id="page-home" class="page-content space-y-8">
-            <!-- Hero Banner -->
-            <div class="bg-gradient-to-r from-brand-600 to-brand-500 rounded-2xl p-8 md:p-12 text-white shadow-md text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-6">
-                <div class="space-y-3 max-w-xl">
-                    <span class="inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-semibold backdrop-blur-sm">2026年度 1年6組</span>
-                    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">1年6組公式ホームページへようこそ！</h1>
-                    <p class="text-brand-50 text-sm leading-relaxed">
-                        連絡事項や時間割、行事予定、思い出の写真などを掲載しています。上のメニューから各ページにアクセスしてください。
-                    </p>
-                </div>
-                <div class="shrink-0 flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-                    <button onclick="navigateTo('news')" class="px-5 py-2.5 bg-white text-brand-600 font-bold text-sm rounded-lg hover:bg-brand-50 transition-colors shadow">最新連絡を見る</button>
-                    <button onclick="navigateTo('timetable')" class="px-5 py-2.5 bg-brand-700/50 hover:bg-brand-700 text-white font-medium text-sm rounded-lg border border-white/20 transition-colors">時間割を確認</button>
-                </div>
-            </div>
-
-            <!-- Home Section Snippets -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Recent News Widget -->
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-                                <span class="w-2.5 h-2.5 rounded-full bg-brand-500"></span>
-                                最新のお知らせ
-                            </h2>
-                            <button onclick="navigateTo('news')" class="text-xs font-semibold text-brand-600 hover:underline">一覧を見る →</button>
-                        </div>
-                        <div class="space-y-3" id="homeNewsPreview">
-                            <!-- JS Output -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Class Goal Quick View -->
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                                クラス目標
-                            </h2>
-                            <button onclick="navigateTo('about')" class="text-xs font-semibold text-brand-600 hover:underline">詳細を見る →</button>
-                        </div>
-                        <div class="bg-slate-50 p-4 rounded-lg border border-slate-100">
-                            <p class="text-base font-bold text-slate-800 text-center py-2">
-                                「みんなで協力し、楽しく学べるクラス」
-                            </p>
-                            <p class="text-xs text-slate-600 leading-relaxed mt-2">
-                                一人ひとりの個性を大切にしながら、困ったときは助け合い、行事も勉強も本気で取り組むクラスを目指しています。
-                            </p>
-                        </div>
-                    </div>
-                    <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500 flex justify-between">
-                        <span>生徒数: 35名</span>
-                        <span>教室: 2階 中校舎</span>
-                    </div>
-                </div>
-            </div>
+    <!-- ナビゲーションバー -->
+    <div class="nav-bar shadow-xs my-3 flex items-center px-3 text-xs text-gray-700 justify-between">
+        <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#886248] animate-pulse"></span>
+            <span>ようこそ 1年6組ホームページへ！</span>
         </div>
-
-        <!-- Page 2: News Page -->
-        <div id="page-news" class="page-content hidden space-y-6">
-            <div class="border-b border-slate-200 pb-4">
-                <h1 class="text-2xl font-bold text-slate-900">お知らせ一覧</h1>
-                <p class="text-xs text-slate-500 mt-1">クラスの連絡事項・配布プリントのご案内です</p>
-            </div>
-            <div class="space-y-3" id="fullNewsList">
-                <!-- JS Output -->
-            </div>
-        </div>
-
-        <!-- Page 3: About Page -->
-        <div id="page-about" class="page-content hidden space-y-8">
-            <div class="border-b border-slate-200 pb-4">
-                <h1 class="text-2xl font-bold text-slate-900">クラス紹介</h1>
-                <p class="text-xs text-slate-500 mt-1">1年6組の学級目標やメッセージです</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                    <span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 font-bold text-xs rounded mb-3">学級目標</span>
-                    <h2 class="text-xl font-bold text-slate-900 mb-3">「みんなで協力し、楽しく学べるクラス」</h2>
-                    <p class="text-sm text-slate-600 leading-relaxed">
-                        一人ひとりの個性を大切にしながら、困ったときは助け合い、行事も勉強も本気で取り組むクラスを目指しています。笑顔が絶えない温かい雰囲気をみんなで作っていきます。
-                    </p>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                    <span class="inline-block px-2.5 py-1 bg-brand-50 text-brand-700 font-bold text-xs rounded mb-3">学級委員より</span>
-                    <h2 class="text-xl font-bold text-slate-900 mb-3">「最高の1年にしよう！」</h2>
-                    <p class="text-sm text-slate-600 leading-relaxed">
-                        1年6組は明るく元気なクラスです！行事では一致団結して優勝を目指し、日々の授業ではみんなで声を掛け合って励まし合っています。このWebサイトを通じてクラスの情報をわかりやすく発信していきます！
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Page 4: Timetable Page -->
-        <div id="page-timetable" class="page-content hidden space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
-                <div>
-                    <h1 class="text-2xl font-bold text-slate-900">時間割</h1>
-                    <p class="text-xs text-slate-500 mt-1">曜日ごとの授業スケジュールと持ち物です</p>
-                </div>
-                <!-- Day Tabs -->
-                <div class="flex bg-slate-200/70 p-1 rounded-lg self-start sm:self-auto" id="dayTabs">
-                    <button data-day="Mon" class="day-tab px-3.5 py-1.5 text-xs font-bold rounded-md bg-white text-brand-600 shadow-sm">月</button>
-                    <button data-day="Tue" class="day-tab px-3.5 py-1.5 text-xs font-bold rounded-md text-slate-600 hover:text-slate-900">火</button>
-                    <button data-day="Wed" class="day-tab px-3.5 py-1.5 text-xs font-bold rounded-md text-slate-600 hover:text-slate-900">水</button>
-                    <button data-day="Thu" class="day-tab px-3.5 py-1.5 text-xs font-bold rounded-md text-slate-600 hover:text-slate-900">木</button>
-                    <button data-day="Fri" class="day-tab px-3.5 py-1.5 text-xs font-bold rounded-md text-slate-600 hover:text-slate-900">金</button>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
-                <div class="divide-y divide-slate-200" id="timetableContent">
-                    <!-- JS Output -->
-                </div>
-            </div>
-        </div>
-
-        <!-- Page 5: Schedule Page -->
-        <div id="page-schedule" class="page-content hidden space-y-6">
-            <div class="border-b border-slate-200 pb-4">
-                <h1 class="text-2xl font-bold text-slate-900">年間行事予定</h1>
-                <p class="text-xs text-slate-500 mt-1">主な学校行事とクラスイベントの予定です</p>
-            </div>
-            <div class="space-y-4" id="scheduleList">
-                <!-- JS Output -->
-            </div>
-        </div>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 mt-auto">
-        <div class="max-w-5xl mx-auto px-4 space-y-1">
-            <p>&copy; 2026 1年6組 All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <!-- News Modal -->
-    <div id="newsModal" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-xl border border-slate-200 max-w-lg w-full p-6 shadow-xl space-y-4">
-            <div class="flex justify-between items-start border-b border-slate-100 pb-3">
-                <div>
-                    <span id="modalCategory" class="inline-block px-2 py-0.5 text-xs font-semibold rounded bg-brand-50 text-brand-600 mb-1">お知らせ</span>
-                    <span id="modalDate" class="text-xs text-slate-400 block">--</span>
-                </div>
-                <button onclick="closeModal('newsModal')" class="text-slate-400 hover:text-slate-600 text-lg font-bold">✕</button>
-            </div>
-            <h3 id="modalTitle" class="text-lg font-bold text-slate-900">--</h3>
-            <p id="modalContent" class="text-sm text-slate-600 leading-relaxed whitespace-pre-line">--</p>
-            <div class="pt-4 border-t border-slate-100 text-right">
-                <button onclick="closeModal('newsModal')" class="px-5 py-2 bg-slate-800 text-white text-xs font-medium rounded-lg hover:bg-slate-700 transition-colors">閉じる</button>
-            </div>
-        </div>
+        <div id="filter-indicator" class="font-bold text-[#764b28]">表示: すべて</div>
     </div>
 
-    <!-- Scripts -->
-    <script>
-        // News Data
-        const newsData = [
-            {
-                id: 1,
-                date: '2026年10月25日',
-                category: '重要',
-                title: '合唱コンクール保護者承諾書の提出について',
-                desc: '11月15日(金)に開催される合唱コンクールの参加承諾書を配布いたしました。\n内容をご確認の上、保護者印を捺印して【10月30日(金)】までに学級委員へご提出ください。'
-            },
-            {
-                id: 2,
-                date: '2026年10月20日',
-                category: '行事',
-                title: '体育祭クラススローガン決定のお知らせ',
-                desc: '先日の学級会にて、1年6組の体育祭スローガンが「一致団結 〜勝利へのバトン〜」に決定いたしました！\n放課後の練習スケジュールは後日連絡いたします。'
-            },
-            {
-                id: 3,
-                date: '2026年10月15日',
-                category: '学習',
-                title: '2学期 中間テストの範囲表配布について',
-                desc: '本日、中間テストの試験範囲表および学習計画表を配布しました。\n各自、計画的にテスト勉強を進めましょう。'
-            }
-        ];
+    <!-- 2. MAIN 3-COLUMN LAYOUT -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-3">
 
-        // Timetable Data
-        const timetableData = {
-            Mon: [
-                { p: 1, name: '国語', teacher: '佐藤先生', room: '1-6教室', item: '教科書, ワーク' },
-                { p: 2, name: '数学', teacher: '山田先生', room: '1-6教室', item: 'ノート, 定規' },
-                { p: 3, name: '英語', teacher: 'Smith先生', room: '1-6教室', item: '単語帳' },
-                { p: 4, name: '理科', teacher: '田中先生', room: '第一理科室', item: '実験ノート' },
-                { p: 5, name: '体育', teacher: '鈴木先生', room: '体育館', item: '体操服, シューズ' },
-                { p: 6, name: 'LHR', teacher: '山田先生', room: '1-6教室', item: '筆記用具' }
-            ],
-            Tue: [
-                { p: 1, name: '社会', teacher: '高橋先生', room: '1-6教室', item: '資料集' },
-                { p: 2, name: '英語', teacher: 'Smith先生', room: '1-6教室', item: '教科書' },
-                { p: 3, name: '数学', teacher: '山田先生', room: '1-6教室', item: '計算ドリル' },
-                { p: 4, name: '音楽', teacher: '小林先生', room: '音楽室', item: 'リコーダー, 楽譜' },
-                { p: 5, name: '美術', teacher: '渡辺先生', room: '美術室', item: 'スケッチブック' },
-                { p: 6, name: '国語', teacher: '佐藤先生', room: '1-6教室', item: '漢字ノート' }
-            ],
-            Wed: [
-                { p: 1, name: '理科', teacher: '田中先生', room: '1-6教室', item: '教科書' },
-                { p: 2, name: '数学', teacher: '山田先生', room: '1-6教室', item: '問題集' },
-                { p: 3, name: '社会', teacher: '高橋先生', room: '1-6教室', item: 'ノート' },
-                { p: 4, name: '体育', teacher: '鈴木先生', room: 'グラウンド', item: '体操服' },
-                { p: 5, name: '英語', teacher: 'Smith先生', room: '1-6教室', item: '教科書' }
-            ],
-            Thu: [
-                { p: 1, name: '英語', teacher: 'Smith先生', room: '1-6教室', item: '教科書' },
-                { p: 2, name: '国語', teacher: '佐藤先生', room: '1-6教室', item: '教科書' },
-                { p: 3, name: '技術', teacher: '伊藤先生', room: '技術室', item: '作業着' },
-                { p: 4, name: '家庭科', teacher: '伊藤先生', room: '被服室', item: '裁縫セット' },
-                { p: 5, name: '数学', teacher: '山田先生', room: '1-6教室', item: 'ノート' },
-                { p: 6, name: '総合', teacher: '山田先生', room: '1-6教室', item: '探究ファイル' }
-            ],
-            Fri: [
-                { p: 1, name: '数学', teacher: '山田先生', room: '1-6教室', item: 'プリント' },
-                { p: 2, name: '社会', teacher: '高橋先生', room: '1-6教室', item: '地図帳' },
-                { p: 3, name: '理科', teacher: '田中先生', room: '1-6教室', item: 'ノート' },
-                { p: 4, name: '国語', teacher: '佐藤先生', room: '1-6教室', item: '教科書' },
-                { p: 5, name: '英語', teacher: 'Smith先生', room: '1-6教室', item: '教科書' },
-                { p: 6, name: '学活', teacher: '山田先生', room: '1-6教室', item: '掃除道具' }
-            ]
-        };
+        <!-- ================= LEFT COLUMN ================= -->
+        <div class="md:col-span-3">
+            
+            <!-- カテゴリ -->
+            <div class="box-brown-header">カテゴリ</div>
+            <div class="box-brown-content">
+                <ul class="sidebar-list">
+                    <li><a href="#" id="cat-ALL" onclick="filterCategory('ALL'); return false;" class="active-link">TOP</a></li>
+                    <li><a href="#" id="cat-お知らせ" onclick="filterCategory('お知らせ'); return false;">お知らせ</a></li>
+                    <li><a href="#" id="cat-子どもの様子" onclick="filterCategory('子どもの様子'); return false;">子どもの様子</a></li>
+                </ul>
+            </div>
 
-        // Schedule Data
-        const scheduleData = [
-            { month: '5月', title: '校外学習（飯ごう炊さん）', desc: '班ごとに協力してカレー作りを行いました！' },
-            { month: '6月', title: '1学期 期末テスト', desc: '最初の大きな定期テストです。' },
-            { month: '9月', title: '体育祭', desc: '学年優勝を目指して全員リレーや大縄跳びに挑戦します。' },
-            { month: '11月', title: '合唱コンクール', desc: 'クラス全員で合唱曲を披露します。' },
-            { month: '3月', title: '球技大会・クラス解散会', desc: '1年間の締めくくりイベント。' }
-        ];
+            <!-- 最新の更新 -->
+            <div class="box-brown-header">最新の更新</div>
+            <div class="box-brown-content">
+                <ul class="sidebar-list text-[11px]">
+                    <li><a href="#post-1" onclick="filterCategory('ALL'); return true;">前期後半 最初の参観・懇談会を行いました 1</a></li>
+                    <li><a href="#post-2" onclick="filterCategory('ALL'); return true;">前期後半 最初の参観・懇談会を行いました 2</a></li>
+                    <li><a href="#post-3" onclick="filterCategory('ALL'); return true;">1年6組 学習参観・懇談会ありがとうございました</a></li>
+                    <li><a href="#post-4" onclick="filterCategory('ALL'); return true;">道徳の学習について</a></li>
+                    <li><a href="#post-5" onclick="filterCategory('ALL'); return true;">お買い物へ行こう</a></li>
+                    <li><a href="#post-6" onclick="filterCategory('ALL'); return true;">【お知らせ】台風接近に伴う登下校対応について</a></li>
+                </ul>
+            </div>
 
-        // Page Navigation Logic
-        function navigateTo(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page-content').forEach(el => el.classList.add('hidden'));
+        </div>
 
-            // Show selected page
-            const target = document.getElementById(`page-${pageId}`);
-            if (target) {
-                target.classList.remove('hidden');
-            }
+        <!-- ================= MIDDLE COLUMN (MAIN CONTENT) ================= -->
+        <div class="md:col-span-6" id="main-posts-container">
 
-            // Update Desktop Nav Active state
-            document.querySelectorAll('#desktopNav .nav-btn').forEach(btn => {
-                if (btn.dataset.page === pageId) {
-                    btn.className = 'nav-btn px-3 py-2 rounded-md text-brand-600 bg-brand-50 font-bold transition-colors';
+            <!-- 記事 1 -->
+            <article class="post-box post-item" data-category="子どもの様子" data-archive="2026-10 2026" id="post-1">
+                <div class="post-title">前期後半 最初の参観・懇談会を行いました 1</div>
+                <div class="post-body">
+                    <p class="mb-2">
+                        既にこのホームページにてお伝えしていますが、11日(水)に前期後半最初の参観・懇談会を行いました。当日は、多数のご参加をいただき本当にありがとうございました。
+                    </p>
+                    <p class="mb-2">
+                        いきいきと活動する、また真剣に学習に取り組む子どもたちの様子を見ていただけたことと思います。子どもたちも、おうちの方々に参観いただきとても嬉しそうでした。
+                    </p>
+                    <p>
+                        これから、約一か月で前期後半も終了し、すぐに後期前半がスタートします。これから、大きな行事も続きます。今後とものご支援とご協力をいただけますよう、よろしくお願いいたします。
+                    </p>
+                </div>
+                <div class="post-footer">
+                    【子どもの様子】 2026-10-17 19:19 upt
+                </div>
+            </article>
+
+            <!-- 記事 2 -->
+            <article class="post-box post-item" data-category="子どもの様子" data-archive="2026-10 2026" id="post-2">
+                <div class="post-title">前期後半 最初の参観・懇談会を行いました 2</div>
+                <div class="post-body">
+                    <p>
+                        参観・懇談会の写真の続きです。懇談会にあわせて、今後の行事についての説明を行いました。
+                    </p>
+                </div>
+                <div class="post-footer">
+                    【子どもの様子】 2026-10-17 19:18 upt
+                </div>
+            </article>
+
+            <!-- 記事 3 -->
+            <article class="post-box post-item" data-category="子どもの様子" data-archive="2026-10 2026" id="post-3">
+                <div class="post-title">1年6組 学習参観・懇談会ありがとうございました</div>
+                <div class="post-body">
+                    <p>
+                        先日はご多用の中、学習参観・懇談会に来ていただきありがとうございました。今年1年6組では、グループでの話し合い活動や友達の発表の聞き方を練習しています。グループの話し合い活動では、グループの中で司会を決め、子どもたちだけで話し合いが進められるように練習しています。発表の聞き方では、友達が発表した後にその意見に対して「付け加え公式」や「質問があります。」ということが子ども達が言えるようにしているところです。日に日に子どもたちが意識的に言葉を使っていてとても嬉しく思います。
+                    </p>
+                </div>
+                <div class="post-footer">
+                    【子どもの様子】 2026-10-14 08:48 upt
+                </div>
+            </article>
+
+            <!-- 記事 4 -->
+            <article class="post-box post-item" data-category="子どもの様子" data-archive="2026-10 2026" id="post-4">
+                <div class="post-title">道徳の学習について</div>
+                <div class="post-body">
+                    <p>
+                        道徳の学習の日々の様子です。自分の考えを明確にしながら友達と議論を重ね、友達の考えと自分の考えを比較したり、自分の考えを変更したりして道徳的価値についての学びを深めています。
+                    </p>
+                </div>
+                <div class="post-footer">
+                    【子どもの様子】 2026-10-14 08:47 upt
+                </div>
+            </article>
+
+            <!-- 記事 5 -->
+            <article class="post-box post-item" data-category="子どもの様子" data-archive="2026-10 2026" id="post-5">
+                <div class="post-title">お買い物へ行こう</div>
+                <div class="post-body">
+                    <p>
+                        生活単元学習の時間に、8・9月のお誕生日会の調理で使う材料を買いに行きました。みんなお勘定を間違えずに、払うことができました。誕生日会が楽しみです。
+                    </p>
+                </div>
+                <div class="post-footer">
+                    【子どもの様子】 2026-10-14 08:46 upt
+                </div>
+            </article>
+
+            <!-- 記事 6 -->
+            <article class="post-box post-item" data-category="お知らせ" id="post-6">
+                <div class="post-title">【お知らせ】台風接近に伴う登下校対応について</div>
+                <div class="post-body">
+                    <p class="text-[#c0564b] font-bold mb-1">保護者の皆様へ</p>
+                    <p>
+                        現在接近中の台風に伴い、安全確保のため明日の登校時間を2時間繰り下げといたします。児童の安全な登校につきまして、ご家庭でも声かけとご配慮をお願いいたします。
+                    </p>
+                </div>
+                <div class="post-footer">
+                    【お知らせ】 2026-10-10 16:00 upt
+                </div>
+            </article>
+
+        </div>
+
+        <!-- ================= RIGHT COLUMN ================= -->
+        <div class="md:col-span-3">
+
+            <!-- 検索 -->
+            <div class="box-brown-header">検索</div>
+            <div class="box-brown-content">
+                <form onsubmit="handleSearch(event)">
+                    <input type="text" id="search-input" class="w-full border border-gray-300 p-1 text-xs mb-2 rounded focus:outline-none focus:border-[#886248]" placeholder="キーワードを入力">
+                    <div class="text-[11px] mb-2">
+                        検索対象期間<br>
+                        <label class="mr-2"><input type="radio" name="search_period" value="year" checked> 年度内</label>
+                        <label><input type="radio" name="search_period" value="all"> すべて</label>
+                    </div>
+                    <button type="submit" class="retro-btn w-full font-bold text-[#4a3322]">検索</button>
+                </form>
+            </div>
+
+            <!-- カレンダー -->
+            <div class="box-brown-header flex justify-between items-center">
+                <span>カレンダー</span>
+            </div>
+            <div class="box-brown-content">
+                <div class="flex justify-between items-center text-xs mb-1.5 text-[#4a3322] font-bold">
+                    <button onclick="changeMonth(-1)" class="retro-btn px-1.5 py-0">&lt;&lt;</button>
+                    <span id="calendar-month-year">2026年10月</span>
+                    <button onclick="changeMonth(1)" class="retro-btn px-1.5 py-0">&gt;&gt;</button>
+                </div>
+                <table class="calendar-table">
+                    <thead>
+                        <tr>
+                            <th class="sun">日</th>
+                            <th>月</th>
+                            <th>火</th>
+                            <th>水</th>
+                            <th>木</th>
+                            <th>金</th>
+                            <th class="sat">土</th>
+                        </tr>
+                    </thead>
+                    <tbody id="calendar-body">
+                        <!-- JSで動的生成 -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 行事予定 -->
+            <div class="box-brown-header">行事予定</div>
+            <div class="box-brown-content">
+                <ul class="sidebar-list text-[11px]">
+                    <li><a href="#" onclick="openModal('10月 月間行事予定', '・10/11 参観・懇談会\n・10/20 全校集会\n・10/29 避難訓練'); return false;">月間行事予定</a></li>
+                    <li><a href="#" onclick="openModal('令和8年度 年間行事予定', '・4月 始業式・入学式\n・5月 運動会\n・10月 参観日\n・11月 学習発表会\n・3月 卒業式'); return false;">年間行事予定</a></li>
+                </ul>
+            </div>
+
+            <!-- 基本情報 -->
+            <div class="box-brown-header">基本情報</div>
+            <div class="box-brown-content text-[11px]">
+                <p class="font-bold text-[#4a3322] mb-1">1年6組</p>
+                <p class="text-gray-600">学級公式ホームページ</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- 3. FOOTER -->
+    <footer class="mt-4 pt-3 border-t-2 border-[#a89584] text-center text-xs text-gray-600 pb-6">
+        <p>Copyright (C) 1年6組 All Rights Reserved.</p>
+        <p class="text-[10px] text-gray-400 mt-1">掲載の記事・写真・イラスト等のすべてのコンテンツの無断複写・転載を禁じます。</p>
+    </footer>
+
+</div>
+
+<!-- モーダルダイアログ -->
+<div id="custom-modal" class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-lg border-2 border-[#886248] max-w-md w-full p-4 shadow-xl">
+        <div class="flex justify-between items-center border-b border-[#dbcdc0] pb-2 mb-3">
+            <h3 id="modal-title" class="font-bold text-[#4a3322] text-sm"></h3>
+            <button onclick="closeModal()" class="text-gray-400 hover:text-black font-bold px-2">✕</button>
+        </div>
+        <div id="modal-body" class="text-xs text-gray-700 whitespace-pre-line leading-relaxed mb-4"></div>
+        <div class="text-right">
+            <button onclick="closeModal()" class="retro-btn font-bold px-4 py-1 text-xs">閉じる</button>
+        </div>
+    </div>
+</div>
+
+<!-- スクリプト -->
+<script>
+    let currentCalDate = new Date(2026, 9, 1);
+    const todayTarget = { year: 2026, month: 9, date: 29 };
+
+    function renderCalendar() {
+        const year = currentCalDate.getFullYear();
+        const month = currentCalDate.getMonth();
+
+        document.getElementById('calendar-month-year').innerText = `${year}年${month + 1}月`;
+
+        const firstDay = new Date(year, month, 1).getDay();
+        const lastDate = new Date(year, month + 1, 0).getDate();
+        const prevLastDate = new Date(year, month, 0).getDate();
+
+        const tbody = document.getElementById('calendar-body');
+        tbody.innerHTML = '';
+
+        let dayCount = 1;
+        let nextMonthDay = 1;
+
+        for (let i = 0; i < 6; i++) {
+            let row = document.createElement('tr');
+            let hasDateInRow = false;
+
+            for (let j = 0; j < 7; j++) {
+                let cell = document.createElement('td');
+                
+                if (j === 0) cell.classList.add('sun');
+                if (j === 6) cell.classList.add('sat');
+
+                if (i === 0 && j < firstDay) {
+                    cell.innerText = prevLastDate - firstDay + j + 1;
+                    cell.classList.add('text-gray-400');
+                } else if (dayCount > lastDate) {
+                    cell.innerText = nextMonthDay++;
+                    cell.classList.add('text-gray-400');
                 } else {
-                    btn.className = 'nav-btn px-3 py-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors';
+                    cell.innerText = dayCount;
+                    hasDateInRow = true;
+
+                    if (year === todayTarget.year && month === todayTarget.month && dayCount === todayTarget.date) {
+                        cell.classList.add('today');
+                    }
+
+                    dayCount++;
                 }
-            });
+                row.appendChild(cell);
+            }
 
-            // Close mobile menu if open
-            document.getElementById('mobileMenu').classList.add('hidden');
-
-            // Scroll top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (hasDateInRow || i < 5) {
+                tbody.appendChild(row);
+            }
         }
+    }
 
-        // Render Functions
-        function renderNews() {
-            // Home Preview (Top 2)
-            const homeContainer = document.getElementById('homeNewsPreview');
-            homeContainer.innerHTML = newsData.slice(0, 2).map(item => `
-                <div onclick="openNewsModal(${item.id})" class="p-3 bg-slate-50 hover:bg-brand-50/50 rounded-lg border border-slate-100 flex items-center justify-between cursor-pointer transition-colors">
-                    <div class="flex items-center gap-2">
-                        <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-brand-100 text-brand-700">${item.category}</span>
-                        <span class="text-xs font-medium text-slate-800 hover:text-brand-600 truncate max-w-[200px] md:max-w-xs">${item.title}</span>
-                    </div>
-                    <span class="text-[10px] text-slate-400 shrink-0">${item.date}</span>
-                </div>
-            `).join('');
+    function changeMonth(delta) {
+        currentCalDate.setMonth(currentCalDate.getMonth() + delta);
+        renderCalendar();
+    }
 
-            // Full List Page
-            const fullContainer = document.getElementById('fullNewsList');
-            fullContainer.innerHTML = newsData.map(item => `
-                <div onclick="openNewsModal(${item.id})" class="p-4 bg-white hover:bg-slate-50 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2 transition-all cursor-pointer shadow-sm">
-                    <div class="flex items-center gap-3">
-                        <span class="text-xs font-bold px-2.5 py-1 rounded bg-brand-100 text-brand-700">${item.category}</span>
-                        <h3 class="text-sm font-bold text-slate-800 hover:text-brand-600 transition-colors">${item.title}</h3>
-                    </div>
-                    <span class="text-xs text-slate-400 shrink-0">${item.date}</span>
-                </div>
-            `).join('');
-        }
+    function clearActiveLinks() {
+        document.querySelectorAll('.sidebar-list a').forEach(a => a.classList.remove('active-link'));
+    }
 
-        function renderTimetable(day = 'Mon') {
-            const container = document.getElementById('timetableContent');
-            const items = timetableData[day] || [];
-            container.innerHTML = items.map(item => `
-                <div class="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-sm bg-white hover:bg-slate-50 transition-colors">
-                    <div class="flex items-center gap-4">
-                        <span class="w-8 h-8 rounded-full bg-slate-100 text-slate-700 font-bold flex items-center justify-center text-xs shrink-0">${item.p}限</span>
-                        <div>
-                            <span class="font-bold text-slate-800 text-base">${item.name}</span>
-                            <span class="text-xs text-slate-500 ml-2">（${item.teacher} / ${item.room}）</span>
-                        </div>
-                    </div>
-                    <div class="text-xs text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md self-start sm:self-auto">
-                        <span class="font-semibold text-slate-600">持ち物:</span> ${item.item}
-                    </div>
-                </div>
-            `).join('');
-        }
+    function filterCategory(category) {
+        clearActiveLinks();
+        const posts = document.querySelectorAll('.post-item');
+        const indicator = document.getElementById('filter-indicator');
+        
+        const activeCat = document.getElementById('cat-' + category);
+        if (activeCat) activeCat.classList.add('active-link');
 
-        function renderSchedule() {
-            const container = document.getElementById('scheduleList');
-            container.innerHTML = scheduleData.map(item => `
-                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-start gap-4">
-                    <span class="shrink-0 px-3 py-1 bg-brand-50 text-brand-700 font-bold text-xs rounded-lg border border-brand-100">${item.month}</span>
-                    <div>
-                        <h3 class="text-base font-bold text-slate-900">${item.title}</h3>
-                        <p class="text-xs text-slate-600 mt-1 leading-relaxed">${item.desc}</p>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Modals
-        function openNewsModal(id) {
-            const item = newsData.find(n => n.id === id);
-            if (!item) return;
-            document.getElementById('modalCategory').innerText = item.category;
-            document.getElementById('modalDate').innerText = item.date;
-            document.getElementById('modalTitle').innerText = item.title;
-            document.getElementById('modalContent').innerText = item.desc;
-            document.getElementById('newsModal').classList.remove('hidden');
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.add('hidden');
-        }
-
-        // Event Listeners Initialization
-        document.addEventListener('DOMContentLoaded', () => {
-            renderNews();
-            renderTimetable('Mon');
-            renderSchedule();
-
-            // Mobile Menu Toggle
-            document.getElementById('mobileMenuBtn').onclick = () => {
-                document.getElementById('mobileMenu').classList.toggle('hidden');
-            };
-
-            // Timetable Tab Switcher
-            document.querySelectorAll('#dayTabs .day-tab').forEach(tab => {
-                tab.addEventListener('click', (e) => {
-                    document.querySelectorAll('#dayTabs .day-tab').forEach(btn => {
-                        btn.className = 'day-tab px-3.5 py-1.5 text-xs font-bold rounded-md text-slate-600 hover:text-slate-900';
-                    });
-                    e.target.className = 'day-tab px-3.5 py-1.5 text-xs font-bold rounded-md bg-white text-brand-600 shadow-sm';
-                    renderTimetable(e.target.dataset.day);
-                });
-            });
+        let count = 0;
+        posts.forEach(post => {
+            if (category === 'ALL' || post.getAttribute('data-category') === category) {
+                post.style.display = 'block';
+                count++;
+            } else {
+                post.style.display = 'none';
+            }
         });
-    </script>
+
+        indicator.innerText = `表示: ${category === 'ALL' ? 'すべて' : category} (${count}件)`;
+    }
+
+    function handleSearch(event) {
+        event.preventDefault();
+        clearActiveLinks();
+        const query = document.getElementById('search-input').value.trim().toLowerCase();
+        if (!query) {
+            filterCategory('ALL');
+            return;
+        }
+
+        const posts = document.querySelectorAll('.post-item');
+        let count = 0;
+
+        posts.forEach(post => {
+            const text = post.innerText.toLowerCase();
+            if (text.includes(query)) {
+                post.style.display = 'block';
+                count++;
+            } else {
+                post.style.display = 'none';
+            }
+        });
+
+        document.getElementById('filter-indicator').innerText = `検索結果: "${query}" (${count}件)`;
+    }
+
+    function openModal(title, content) {
+        document.getElementById('modal-title').innerText = title;
+        document.getElementById('modal-body').innerText = content;
+        const modal = document.getElementById('custom-modal');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('custom-modal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    }
+
+    window.onload = function() {
+        renderCalendar();
+    };
+</script>
+
 </body>
 </html>
